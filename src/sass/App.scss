@@ -1,0 +1,54 @@
+
+
+//mixins
+@mixin center-flex($direction: row,$main: center, $cross: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $main;
+    align-items: $cross;
+}
+@mixin allSpace() {
+    width:100%;
+    height: 100%;
+}
+//general 
+a{
+    text-decoration: none;
+    color: black;
+}
+
+//main styling
+
+.section {
+    min-height: 100vh;
+}
+
+//navbar
+.nav-container {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    @include center-flex();
+    background-color: #b8edff;
+    // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+}
+.nav-list {
+    padding: 12px 0;
+    @include center-flex(row, center,center);
+    gap: 48px;
+}
+
+
+
+//MEDIA QUERYS
+
+@media screen and (max-width: 900px) {
+    .nav-container {
+        position: fixed;
+        bottom: 0;    
+    }
+    .nav-list {
+        padding: 15px 0;
+    }
+}
