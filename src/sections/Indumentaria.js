@@ -1,8 +1,11 @@
 import React from 'react'
+import SectionContainer from '../hoc/SectionContainer'
 
 const Indumentaria = () => {
   return (
-    <div id='indumentaria' className='section'>Indumentaria</div>
+    <SectionContainer claseSeccion={'sect-ind'} nombreSeccion={'indumentaria'}>
+      <div className='section'>Indumentaria</div>
+    </SectionContainer>
   )
 }
 

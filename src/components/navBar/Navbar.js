@@ -13,9 +13,6 @@ const Navbar = () => {
   >
         <nav className='nav-list'>
             {links.map((link,index) => (
-              // <NavLink key={index} to={`#${link.url}`} className={({ isActive }) => (isActive ? 'nav-list-item active_navlink' : 'nav-list-item')} end>
-              //     {link.name}
-              //   </NavLink>
               <a key={index} href={`#${link.url}`}>{link.name}</a>
             ))}
         </nav>

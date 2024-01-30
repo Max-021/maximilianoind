@@ -1,8 +1,11 @@
 import React from 'react'
+import SectionContainer from '../hoc/SectionContainer'
 
 const Contacto = () => {
   return (
-    <div id='contacto' className='section'>Contacto</div>
+    <SectionContainer claseSeccion={'sect-contacto'} nombreSeccion={'contacto'}>
+      <div className='section'>Contacto</div>
+    </SectionContainer>
   )
 }
 
