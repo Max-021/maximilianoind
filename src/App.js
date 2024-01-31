@@ -14,11 +14,6 @@ function App() {
   return (
     <Auxiliary>
       <Navbar/>
-      {/* <Routes>
-        <Route path='/' element={<Portada/>}/>
-        <Route path='/' element={<Indumentaria/>}/>
-        <Route path='/' element={<Contacto/>}/>
-      </Routes> */}
       <>
         <Portada/>
         <Indumentaria/>

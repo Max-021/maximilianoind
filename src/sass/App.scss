@@ -68,6 +68,22 @@ section{
 //contacto
 .sect-contacto {
     background-color: $darkColor;
+    @include center-flex();
+}
+.contact-content {
+    @include center-flex(row, space-between, flex-start);
+    padding: 0 120px;
+    flex: 1;
+    color: $lightColor;
+    h2{
+        font-size: 250%;
+    }
+}
+.info-contacto {
+    @include center-flex(column, flex-start,flex-start)
+}
+.detalle-contacto {
+    @include center-flex(column, flex-start,flex-start)
 }
 //footer
 footer {
