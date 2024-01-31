@@ -26,6 +26,12 @@ const SectionContainer = (props) => {
   return (
     <>
         <div className={props.claseSeccion} id={props.nombreSeccion} style={{paddingTop:`${customHeight}px`, minHeight: `calc(100vh - ${customHeight}px)`}}>
+          {
+            props.nombreSeccion === 'indumentaria' ?
+            <div className='shadow-ind-bkg' style={{marginTop: `-${customHeight}px`}}></div>
+            :
+            null
+          }
             {props.children}
         </div>    
     </>

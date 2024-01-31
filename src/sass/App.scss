@@ -15,6 +15,8 @@ $lightColor: #f3f3f4;
 $darkColor: #12130f;
 $firstColor: #C8871F;
 
+$darkColorOpacity: #12130fb1;
+
 //general
 html{
     scroll-behavior: smooth;
@@ -53,7 +55,15 @@ section{
 }
 //indumentaria
 .sect-ind {
-    background-color: $firstColor;
+    background-image: url('../assets/images/ind-bkg.jpg');
+    background-size: cover;
+}
+.shadow-ind-bkg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $darkColorOpacity;
+    backdrop-filter: blur(3px);
 }
 //contacto
 .sect-contacto {
