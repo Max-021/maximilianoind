@@ -51,7 +51,7 @@ section{
 
 //portada
 .sect-portada {
-    background-color: $lightColor;
+    background-color: $darkColor;
 }
 //indumentaria
 .sect-ind {
@@ -67,15 +67,16 @@ section{
 }
 //contacto
 .sect-contacto {
-    background-color: $darkColor;
+    background-color: $lightColor;
     @include center-flex();
 }
 .contact-content {
     @include center-flex(row, space-between, flex-start);
     padding: 0 120px;
     flex: 1;
-    color: $lightColor;
+    color: $darkColor;
     h2{
+        margin-top: 0;
         font-size: 250%;
     }
 }
@@ -83,7 +84,27 @@ section{
     @include center-flex(column, flex-start,flex-start)
 }
 .detalle-contacto {
-    @include center-flex(column, flex-start,flex-start)
+    @include center-flex(column, flex-start,flex-start);
+    width: 50%;
+    flex-wrap: wrap;
+}
+.contact-icon{
+    vertical-align: sub;
+}
+.mapa-contacto{
+    width: 60%;
+    height: auto;
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.7);
+}
+.medios-de-pago{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+.medioIcon {
+    width: 85px;
+    height: auto;
+    vertical-align: middle;
 }
 //footer
 footer {
