@@ -10,11 +10,11 @@ const Portada = () => {
         <div className='info-portada'>
           <h1>Maximiliano Hombres</h1>
           <p>Desde 1999 en Monte Castro.</p>
-          <p>Somos una empresa familiar dedicada a ofrecer productos de calidad a nuestros clientes, acorde a lo que necesiten logrando que confien en nosotros a lo largo de más de 20 años en el barrio.</p>
+          <p>Somos una empresa familiar dedicada a ofrecer productos de calidad a nuestros clientes acorde a lo que necesiten, logrando que confien en nosotros a lo largo de más de 20 años en el barrio.</p>
           <a className='btn-portada' href='#indumentaria'>Nuestro producto</a>
         </div>
       </div>
-      <img className='img-portada' src={require('../assets/images/mapa-contacto.png')} alt=''/>
+      <img className='img-portada' src={require('../assets/images/landpage.jpg')} alt=''/>
     </SectionContainer>
   )
 }

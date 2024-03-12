@@ -8,7 +8,7 @@ const Footer = () => {
         <a href='#'><FaFacebookSquare/></a>
         <a href='#'><FaInstagram/></a>
       </div>
-      <p>Creado por: <a href='#Agregar link a pagina del local' target='_blank' rel="noreferrer noopener">Maximiliano Frega</a></p>
+      <p>Creado por: <a href='https://www.maximilianofrega.com' target='_blank' rel="noreferrer noopener">Maximiliano Frega</a></p>
     </footer>
   )
 }

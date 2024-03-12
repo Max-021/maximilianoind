@@ -35,7 +35,8 @@ section{
     position: fixed;
     width: 100%;
     z-index: 10;
-    @include center-flex();
+    @include center-flex(row, flex-start, center);
+    padding-left: 80px;
     background-color: $darkColor;
     // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 3px );
@@ -55,8 +56,9 @@ section{
     color: $lightColor;
 }
 .info-portada{
-   @include center-flex(column, flex-start , flex-start);
-   margin-left: 32px;
+    position: absolute;
+    left: 80px;
+    @include center-flex(column, flex-start , flex-start);
    width: 701px;
    p {
     font-size: 150%;
@@ -79,8 +81,8 @@ h1{
     box-shadow: 10px 10px 35px -15px $firstColor;
 }
 .img-portada {
-    width: 750px;
-    height: 700px;
+    width: 45%;
+    height: auto;
     box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     position: absolute;
     right: 100px;
@@ -90,6 +92,8 @@ h1{
 .sect-ind {
     background-image: url('../assets/images/ind-bkg.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
 .shadow-ind-bkg{
     width: 100%;
@@ -97,6 +101,48 @@ h1{
     position: absolute;
     background-color: $darkColorOpacity;
     backdrop-filter: blur(2px);
+}
+.ind-content {
+    position: absolute;
+    left: 80px;
+    h2{
+        color: $firstColor;
+        font-size: 150%;
+    }
+}
+
+.fichero {
+    z-index: 5;
+    @include center-flex(column, flex-start, flex-start);
+    width: 100%;
+    color: $lightColor;
+}
+.categorias {
+    @include center-flex();
+    gap: 32px;
+}
+.ficha {
+    height: 100%;
+    width: 100%;
+    @include center-flex(row, flex-start,flex-start);
+    gap: 120px;
+}
+.prim-part{
+    @include center-flex(column, flex-start, flex-start);
+    width: 50%;
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+.seg-part{
+    @include center-flex(column, flex-start, flex-start);
+    width: 32%;
+    gap: 50px;
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
 //contacto
 .sect-contacto {
@@ -168,7 +214,9 @@ footer {
 
 @media screen and (max-width: 900px) {
     .nav-container {
-        bottom: 0;    
+        bottom: 0;
+        justify-content: center;
+        padding-left: 0;
     }
     .nav-list {
         padding: 15px 0;
