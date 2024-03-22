@@ -104,44 +104,56 @@ h1{
 }
 .ind-content {
     position: absolute;
-    left: 80px;
+    margin:0 80px;
     h2{
         color: $firstColor;
         font-size: 150%;
+        margin: 0;
     }
-}
+ }
 
 .fichero {
     z-index: 5;
     @include center-flex(column, flex-start, flex-start);
     width: 100%;
     color: $lightColor;
+    margin:15px 0 30px 0;
 }
 .categorias {
     @include center-flex();
     gap: 32px;
+    font-size: 115%;
+}
+.indCatBtn{
+    cursor: pointer;
+    transition: all 0.7s;
+}
+.activeCat {
+    // font-size: 120%;
+    border-bottom: 3px solid $lightColor;
 }
 .ficha {
     height: 100%;
     width: 100%;
-    @include center-flex(row, flex-start,flex-start);
-    gap: 120px;
+    gap: 32px;
+    display: flex;
 }
 .prim-part{
     @include center-flex(column, flex-start, flex-start);
-    width: 50%;
+    width: 63%;
     img {
         width: 100%;
         height: auto;
+        box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
 }
 .seg-part{
-    @include center-flex(column, flex-start, flex-start);
-    width: 32%;
-    gap: 50px;
+    @include center-flex(column, space-between, flex-start);
+    width: 33%;
     img {
-        width: 100%;
-        height: auto;
+        height: calc(50% - 16px);
+        width: auto;
+        box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
 }
 //contacto

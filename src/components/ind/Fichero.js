@@ -5,21 +5,23 @@ import { indCats } from '../../data/indData'
 
 const Fichero = () => {
   // DEJAR POR DEFECTO CAMISAS DESPUES
-  const [activeCat, setActiveCat] = useState('0')
+  const [activeCat, setActiveCat] = useState('test')
 
 
   return (
-    <div className='fichero'>
-      <div className='categorias'>
-        {indCats.map((data,index) => {
-          return <>
-            <button key={index} onClick={() => setActiveCat(index)}>{data.name}</button>
-            {index < indCats.length - 1  ? <p> | </p> : null}
-          </>
-        })}
+    <>
+      <div className='fichero'>
+        <div className='categorias'>
+          {indCats.map((data,index) => {
+            return <div key={index} style={{display: 'contents'}}>
+              <p className={`indCatBtn ${index === activeCat ? 'activeCat' : null}`} onClick={() => setActiveCat(data.name)}>{data.name}</p>
+              {index < indCats.length - 1  ? <p> | </p> : null}
+            </div>
+          })}
+        </div>
       </div>
-      <Ficha {...indCats[activeCat]}/>
-    </div>
+      <Ficha categoria={activeCat.toLowerCase()}/>
+    </>
   )
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import links from '../../data/navData'
 import { motion } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
