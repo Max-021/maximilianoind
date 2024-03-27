@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import _ from 'lodash'
 
+//array of objects with a property that has an array of images
 import {imgPack} from './imagesLoader'
 
 const imgData = imgPack
@@ -10,69 +11,96 @@ const Ficha = ({ categoria }) => {
   const [customHeight, setCustomHeight] = useState(0);
 
   const [activeArray, setActiveArray] = useState(imgData['0']);
-  const [activeImg, setActiveImg] = useState(['0','1','2']);
-  const [excludedValues, setExcludedValues] = useState([]);
+  const [imgPos, setImgPos] = useState(['0','1','2'])
+  let activeImg = ['0','1','2'];
+  let excludedValues = []
+  let activeLength = imgData[0].images.length;
+
+
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+   
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+   
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
 
   const changeExcludedValues = () => {
-    let arrToExclude = [...excludedValues]
-    for (let index = 0; index < activeArray.images.length; index++) {
+    const ind = imgData.map(cat => cat.catName).indexOf(categoria)
+    let arrToExclude = []
+    activeLength = imgData[ind].images.length;
+    for (let index = 0; index < activeLength; index++) {
       arrToExclude.push(index.toString());
     }
+    console.log(activeImg+'     activeimg')
     arrToExclude = _.difference(arrToExclude, activeImg);
-    setExcludedValues(arrToExclude)
-    console.log('exluded values')
-    console.log(excludedValues)
+    console.log('arrtoexclude       '+arrToExclude)
+    excludedValues = arrToExclude;
+    return arrToExclude;
+    //acá cambiarlo para que esta funcion devuelva (return) un array con lo que necesito en vez de modificarlo
   }
   const changeImg = () => {
-    let excludedCopy = excludedValues
-    const imgArrayCopy = activeImg;
-    const newImgArray = [];
+    let excludedCopy = changeExcludedValues();
+    // let excludedCopy = excludedValues
+    console.log('after copy    '+excludedCopy)
 
-    console.log('excluded copy before mapping')
-    console.log(excludedCopy)
-
-    imgArrayCopy.map((img) => {
-
-      const newVal = _.sample(excludedValues);
-      excludedCopy.splice(excludedCopy.indexOf(newVal),1)
+    const newImgArray = activeImg.map((img) => {
+      const newVal = _.sample(excludedCopy);
+      // console.log('newval  ' +  newVal)
       excludedCopy.push(img)
-      newImgArray.push(newVal)
+      // console.log(excludedCopy)
+      // console.log(excludedCopy.indexOf(newVal))
+      excludedCopy.splice(excludedCopy.indexOf(newVal),1)
+      // console.log(excludedCopy)
+      return newVal
     })
-    console.log('excluded copy')
-    console.log(excludedCopy)
-    console.log('excludedvalue')
-    setExcludedValues([...excludedCopy])
-    console.log(excludedValues)
-    return newImgArray
+    console.log('newimgarr       '+newImgArray)
+    excludedValues = excludedCopy
+    activeImg = newImgArray
+    setImgPos(newImgArray)
+    // console.log('excluded values   '+excludedValues)
+    // console.log(excludedCopy)
   }
+
+  //cambio de imagenes
+  useInterval(() => {
+    // changeExcludedValues();
+    changeImg();
+  }, 3000)
 
   useEffect(()=>{
     const imgHeight = document.querySelector('.prim-part').clientHeight;
     setCustomHeight(imgHeight);
-    const interval = setInterval(() => {
-      setActiveImg(changeImg())
-      // console.log('active img')
-      // console.log(activeImg)
-    }, 3000);
-    console.log('primer useefefct')
-    return () => clearInterval(interval)
-  }, [])
-
+  }, [customHeight])
   useEffect(()=> {
     const ind = imgData.map(cat => cat.catName).indexOf(categoria)
     setActiveArray(imgData[ind])
-    // setActiveImg(['0','1','2'])
+    // excludedValues = changeExcludedValues();
     changeExcludedValues();
+    activeImg = ['0','1','2']
+    setImgPos(['0','1','2'])
   },[categoria])
 
   return (
     <div className='ficha'>
       <div className='prim-part'>
-        <img src={activeArray.images[activeImg[0]]} alt='img1' className='big-img'/>
+        <img src={activeArray.images[imgPos[0]]} alt='img1' className='big-img'/>
       </div>
       <div className='seg-part' style={{height: customHeight}}>
-        <img src={activeArray.images[activeImg[1]]} alt='img2' className='sm-img'/>
-        <img src={activeArray.images[activeImg[2]]} alt='img2' className='sm-img'/>
+        <img src={activeArray.images[imgPos[1]]} alt='img2' className='sm-img'/>
+        <img src={activeArray.images[imgPos[2]]} alt='img2' className='sm-img'/>
       </div>
     </div>
   )
