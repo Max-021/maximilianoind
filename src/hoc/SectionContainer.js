@@ -12,6 +12,10 @@ const SectionContainer = (props) => {
       setCustomHeight(navHeight)
     }
   }
+  useEffect(()=>{
+    const initialNavHeight = document.querySelector('.nav-container').clientHeight;
+    adjustResponsivePadding();    
+  },[customHeight])
 
   useEffect(()=> {
     const initialNavHeight = document.querySelector('.nav-container').clientHeight;

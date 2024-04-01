@@ -54,13 +54,13 @@ section{
 .sect-portada {
     background-color: $darkColor;
     color: $lightColor;
+    @include center-flex(row, space-between, flex-start);
+    padding: 0 20px;
 }
 .info-portada{
-    position: absolute;
-    left: 80px;
     @include center-flex(column, flex-start , flex-start);
-   width: 701px;
-   p {
+    
+    p {
     font-size: 150%;
     margin: 10px 0px;
    }
@@ -69,24 +69,22 @@ h1{
     font-size: 420%;
 }
 .btn-portada {
-    align-self: center;
     font-size: 150%;
     color: $lightColor;
     width: fit-content;
     height: fit-content;
     background-color: $firstColor;
     border-radius: 5px;
-    margin-top: 120px;
+    margin-top: 100px;
     padding: 12px;
     box-shadow: 10px 10px 35px -15px $firstColor;
 }
 .img-portada {
+    align-self: center;
     width: 45%;
     height: auto;
     box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
-    position: absolute;
-    right: 100px;
-    top: 10%;
+
 }
 //indumentaria
 .sect-ind {
@@ -104,7 +102,11 @@ h1{
 }
 .ind-content {
     position: absolute;
-    margin:0 80px;
+    min-height: calc(-45px + 100vh);
+    display: flex;
+    flex-flow: column;
+    margin:0 40px;
+    width: 100%;
     h2{
         color: $firstColor;
         font-size: 150%;
@@ -118,11 +120,13 @@ h1{
     width: 100%;
     color: $lightColor;
     margin:15px 0 30px 0;
+    overflow: hidden
 }
 .categorias {
     @include center-flex();
     gap: 32px;
-    font-size: 115%;
+    font-size: 1.2rem;
+    overflow: hidden;
 }
 .indCatBtn{
     cursor: pointer;
@@ -133,9 +137,9 @@ h1{
     border-bottom: 3px solid $lightColor;
 }
 .ficha {
-    height: 100%;
-    width: 100%;
+    width: 100vw;
     gap: 32px;
+    flex: 1 1 auto;
     display: flex;
 }
 .prim-part{
@@ -143,16 +147,18 @@ h1{
     width: 63%;
     img {
         width: 100%;
-        height: auto;
+        aspect-ratio: 16/9;
         box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
 }
 .seg-part{
-    @include center-flex(column, space-between, flex-start);
+    @include center-flex(column, flex-start, flex-start);
     width: 33%;
+    display: flex;
+    gap: 32px;
     img {
         height: calc(50% - 16px);
-        width: auto;
+        width: 100%;
         box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
 }
@@ -163,11 +169,11 @@ h1{
 }
 .contact-content {
     @include center-flex(row, space-between, flex-start);
-    padding: 0 120px;
+    padding: 0 40px;
     flex: 1;
     color: $darkColor;
     h2{
-        margin-top: 0;
+        margin-top: 24px;
         font-size: 250%;
     }
 }
@@ -178,6 +184,9 @@ h1{
     @include center-flex(column, flex-start,flex-start);
     width: 50%;
     flex-wrap: wrap;
+}
+.horarios{
+    align-self: center;
 }
 .contact-icon{
     vertical-align: sub;
@@ -216,15 +225,28 @@ footer {
     color: $lightColor;
     > * {
         padding-right: 5px;
-        // &:hover{
-        //     color: $firstColor;
-        // }
     }
 }
 
 //MEDIA QUERYS
 
-@media screen and (max-width: 900px) {
+@media screen and ((max-width: 900px) or (orientation: portrait)) {
+    //footer
+    footer{
+        background-color: $lightColor;
+        color:$darkColor;
+        p{
+            a{
+                color:$darkColor;
+            }
+        }
+    }
+    .footer-icons{
+        a{
+            color: $darkColor;
+        }
+    }
+    //nav
     .nav-container {
         bottom: 0;
         justify-content: center;
@@ -233,8 +255,75 @@ footer {
     .nav-list {
         padding: 15px 0;
     }
+    // portada
+    .sect-portada{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .info-portada {
+        p{
+            font-size: 120%;
+        }
+    }
+    .btn-portada{
+        margin-top: 40px;
+    }
+    .img-portada{
+        width: 95%;
+        margin: 15% 0  ;
+    }
+    h1{
+        font-size: 2.4em;
+    }
     // indumentaria
     .sect-ind{
         background-image: url('../assets/images/responsive-ind-bkg.jpg');
+    }
+    .ind-content{
+        margin: 0;
+    }
+    .ficha{
+        flex-direction: column;
+        gap: 0;
+    }
+    .prim-part{
+        width: 100%;
+    }
+    .seg-part{
+        flex-direction: row;
+        gap: 0;
+        width: 100%;
+        img{
+            object-fit: cover;
+        }
+    }
+    // contacto
+    .sect-contacto{
+        flex-direction: column;
+    }
+    .contact-content{
+        flex-direction: column;
+        justify-content: flex-start;
+        h2{
+            margin-bottom: 10px;
+        }
+    }
+    .horarios{
+        align-self: flex-start;
+    }
+    .mapa-contacto{
+        width: 100%;
+        margin-bottom: 48px;
+        margin-top: 10%;
+    }
+    .detalle-contacto{
+        width: 100%;
+        p{
+            margin: 10px 0;
+        }
+    }
+    .medios-de-pago{
+        width: 100%;
+        justify-content: center;
     }
 }

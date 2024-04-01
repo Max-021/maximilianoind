@@ -43,23 +43,15 @@ const Ficha = ({ categoria }) => {
     for (let index = 0; index < activeLength; index++) {
       arrToExclude.push(index.toString());
     }
-    // if (arrToExclude.length > 4) {
-      arrToExclude = _.difference(arrToExclude, activeImg);
-    // }
-    console.log('arrtoexclude       '+arrToExclude)
+    arrToExclude = _.difference(arrToExclude, activeImg);
+
     excludedValues = arrToExclude;
     return arrToExclude;
-    //acá cambiarlo para que esta funcion devuelva (return) un array con lo que necesito en vez de modificarlo
   }
   const changeImg = () => {
     let excludedCopy = changeExcludedValues();
     let newImgArray = [];
 
-    // if (excludedCopy.length <= 4) {
-    //   excludedCopy = _.shuffle(excludedCopy)
-    //   activeImg = excludedCopy.slice(0,3)
-    // }else{
- 
       newImgArray = activeImg.map((img) => {
         const newVal = _.sample(excludedCopy);
         
@@ -69,9 +61,6 @@ const Ficha = ({ categoria }) => {
         return newVal
       })
       activeImg = newImgArray
-    // }
-    console.log('after change    '+excludedCopy)
-    console.log('newimgarr       '+newImgArray)
     excludedValues = excludedCopy
     setImgPos(newImgArray)
   }
@@ -80,11 +69,18 @@ const Ficha = ({ categoria }) => {
   useInterval(() => {
     changeImg();
   }, 3000)
+  useEffect(()=>{
+    window.addEventListener('resize', () => {
+      const imgHeight = document.querySelector('.img1').clientHeight;
+      setCustomHeight(imgHeight);
+    })
+  }, [])
 
   useEffect(()=>{
-    const imgHeight = document.querySelector('.prim-part').clientHeight;
+    const imgHeight = document.querySelector('.img1').clientHeight;
     setCustomHeight(imgHeight);
-  }, [customHeight])
+  },customHeight)
+
   useEffect(()=> {
     const ind = imgData.map(cat => cat.catName).indexOf(categoria)
     setActiveArray(imgData[ind])
@@ -96,11 +92,11 @@ const Ficha = ({ categoria }) => {
   return (
     <div className='ficha'>
       <div className='prim-part'>
-        <img src={activeArray.images[imgPos[0]]} alt='img1' className='big-img'/>
+        <img className='img1' src={activeArray.images[imgPos[0]]} alt='img1'/>
       </div>
-      <div className='seg-part' style={{height: customHeight}}>
-        <img src={activeArray.images[imgPos[1]]} alt='img2' className='sm-img'/>
-        <img src={activeArray.images[imgPos[2]]} alt='img2' className='sm-img'/>
+      <div className='seg-part'>
+        <img src={activeArray.images[imgPos[1]]} style={{height: `${customHeight/2 - 16}px`}} alt='img2'/>
+        <img src={activeArray.images[imgPos[2]]} style={{height: `${customHeight/2 - 16}px`}} alt='img3'/>
       </div>
     </div>
   )

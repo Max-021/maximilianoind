@@ -23,7 +23,7 @@ const Contacto = () => {
           <div className='detalle-contacto'>
             <p><FaLocationDot className='contact-icon'/> Dirección: Av. Álvarez Jonte 4994</p>
             <p><FaPhone className='contact-icon'/> Teléfono: 4648-0107</p>
-            <p style={{alignSelf: 'center'}}>Horarios</p>
+            <p className='horarios'>Horarios</p>
             <p><MdOutlineWatchLater className='contact-icon'/> Lun a Vie: 10hs a 13hs y 16hs a 20hs</p>
             <p><MdOutlineWatchLater className='contact-icon'/> Sáb: 10hs a 14hs y 16hs a 20hs</p>
           </div>
