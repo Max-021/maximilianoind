@@ -67,6 +67,7 @@ section{
 }
 h1{
     font-size: 420%;
+    background-color: $darkColorOpacity;
 }
 .btn-portada {
     font-size: 150%;
@@ -93,34 +94,26 @@ h1{
     background-repeat: no-repeat;
     z-index: 0;
 }
-.shadow-ind-bkg{
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    background-color: $darkColorOpacity;
-    backdrop-filter: blur(2px);
-}
 .ind-content {
-    position: absolute;
-    min-height: calc(-45px + 100vh);
+    // min-height: calc(-45px + 100vh);
+    min-height: fit-content;
     display: flex;
     flex-flow: column;
-    // margin:0 0 0 40px;
     margin:0 40px;
     width: 95%;
     h2{
         color: $firstColor;
-        font-size: 150%;
-        margin: 0;
+        font-size: 250%;
+        margin: 0 0 0 40px;
     }
  }
 
 .fichero {
     z-index: 5;
     @include center-flex(column, flex-start, flex-start);
-    width: 100%;
+    // width: 100%;
     color: $lightColor;
-    margin:15px 0 30px 0;
+    margin:15px 0 30px 40px;
     overflow: hidden
 }
 .categorias {
@@ -148,6 +141,7 @@ h1{
     img {
         width: 100%;
         aspect-ratio: 16/9;
+        object-fit: cover;
         box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
 }
@@ -159,6 +153,7 @@ h1{
     img {
         height: calc(50% - 16px);
         width: 100%;
+        object-fit: cover;
         box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
 }
@@ -182,11 +177,8 @@ h1{
 }
 .detalle-contacto {
     @include center-flex(column, flex-start,flex-start);
-    width: 50%;
+    width: 100%;
     flex-wrap: wrap;
-}
-.horarios{
-    align-self: center;
 }
 .contact-icon{
     vertical-align: sub;
@@ -199,7 +191,7 @@ h1{
 .medios-de-pago{
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 100%;
 }
 .medioIcon {
     width: 85px;
@@ -208,44 +200,67 @@ h1{
 }
 //footer
 footer {
-    background-color: $darkColor;
-    color: $lightColor;
+    background-color: $lightColor;
+    color: $darkColor;
     @include center-flex(row, space-between, center);
     padding: 0px 6px;
     p {
         margin: 0;
         a {
-            color: $lightColor;
+            color: $darkColor;
             text-decoration: underline;
         }
     }
 }
 .footer-icons a{
     font-size: 150%;
-    color: $lightColor;
+    color: $darkColor;
     > * {
         padding-right: 5px;
     }
 }
 
 //MEDIA QUERYS
+@media screen and (max-width: 1200px) {
+    // indumentaria
+    .sect-ind{
+        background-image: url('../assets/images/responsive-ind-bkg.jpg');
+    }
+    .sect-ind{
+        background-image: url('../assets/images/responsive-ind-bkg.jpg');
+    }
+    .ind-content{
+        margin: 0;
+        width: 100%;
+    }
+    .ficha{
+        align-self: center;
+        width: 90%;
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 10vh;
+    }
+    .prim-part{
+        width: 100%;
+        img{
+        }
+    }
+    .seg-part{
+        flex-direction: row;
+        gap: 0;
+        width: 100%;
+        img{
+            aspect-ratio: auto;
+            object-fit: cover;
+        }
+    }
+    //contacto
+    .mapa-contacto{
+        align-self: center;
+    }
+}
 
 @media screen and ((max-width: 900px) or (orientation: portrait)) {
-    //footer
-    footer{
-        background-color: $lightColor;
-        color:$darkColor;
-        p{
-            a{
-                color:$darkColor;
-            }
-        }
-    }
-    .footer-icons{
-        a{
-            color: $darkColor;
-        }
-    }
     //nav
     .nav-container {
         bottom: 0;
@@ -270,33 +285,17 @@ footer {
     }
     .img-portada{
         width: 95%;
-        margin: 15% 0  ;
+        margin: 10% 0  ;
     }
     h1{
         font-size: 2.4em;
     }
-    // indumentaria
-    .sect-ind{
-        background-image: url('../assets/images/responsive-ind-bkg.jpg');
-    }
-    .ind-content{
-        margin: 0;
-        width: 100%;
-    }
+    //indumentaria
     .ficha{
-        flex-direction: column;
-        gap: 0;
-    }
-    .prim-part{
         width: 100%;
     }
     .seg-part{
         flex-direction: row;
-        gap: 0;
-        width: 100%;
-        img{
-            object-fit: cover;
-        }
     }
     // contacto
     .sect-contacto{
@@ -304,6 +303,9 @@ footer {
         h2{
             margin-top: 24px;
         }
+    }
+    .info-contacto{
+        width: 100%;
     }
     .contact-content{
         flex-direction: column;
@@ -313,21 +315,30 @@ footer {
         }
     }
     .horarios{
-        align-self: flex-start;
+        width: 100% !important;
     }
     .mapa-contacto{
         width: 100%;
         margin-bottom: 48px;
-        margin-top: 10%;
+        margin-top: 5%;
     }
     .detalle-contacto{
         width: 100%;
+        flex-direction: row;
         p{
             margin: 10px 0;
+            width: 50%;
+            display: inline-block;
         }
     }
     .medios-de-pago{
         width: 100%;
         justify-content: center;
+    }
+}
+@media screen and (max-width: 600px){
+    .seg-part{
+        flex-direction: column;
+        height: auto;
     }
 }

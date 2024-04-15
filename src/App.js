@@ -19,7 +19,7 @@ function App() {
         <Indumentaria/>
         <Contacto/>
       </>
-      <Footer/>
+      {/* <Footer/> */}
     </Auxiliary>
     );
 }

@@ -9,6 +9,7 @@ const imgData = imgPack
 const Ficha = ({ categoria }) => {
   
   const [customHeight, setCustomHeight] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0)
 
   const [activeArray, setActiveArray] = useState(imgData['0']);
   const [imgPos, setImgPos] = useState(['0','1','2'])
@@ -69,7 +70,15 @@ const Ficha = ({ categoria }) => {
   useInterval(() => {
     changeImg();
   }, 3000)
+
   useEffect(()=>{
+
+    setWindowWidth(window.screen.width);
+    setCustomHeight(document.querySelector('.img1').clientHeight)
+
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.screen.width)
+    })
     window.addEventListener('resize', () => {
       const imgHeight = document.querySelector('.img1').clientHeight;
       setCustomHeight(imgHeight);
@@ -95,8 +104,8 @@ const Ficha = ({ categoria }) => {
         <img className='img1' src={activeArray.images[imgPos[0]]} alt='img1'/>
       </div>
       <div className='seg-part'>
-        <img src={activeArray.images[imgPos[1]]} style={{height: `${customHeight/2 - 16}px`}} alt='img2'/>
-        <img src={activeArray.images[imgPos[2]]} style={{height: `${customHeight/2 - 16}px`}} alt='img3'/>
+        <img src={activeArray.images[imgPos[1]]} style={{height: windowWidth > 600 ? `${customHeight/2 - 16}px` : 'auto'}} alt='img2'/>
+        <img src={activeArray.images[imgPos[2]]} style={{height: windowWidth > 600 ? `${customHeight/2 - 16}px` : 'auto'}} alt='img3'/>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import SectionContainer from '../hoc/SectionContainer'
+import Footer from '../components/footer/Footer';
 
 import { mediosDePago } from '../data/icons';
 
@@ -16,6 +17,7 @@ import { MdOutlineWatchLater } from "react-icons/md";
 
 const Contacto = () => {
   return (
+    <>
     <SectionContainer claseSeccion={'sect-contacto'} nombreSeccion={'contacto'}>
       <div className='section contact-content'>
         <div className='info-contacto'>
@@ -37,6 +39,8 @@ const Contacto = () => {
         <img className='mapa-contacto' src={require('../assets/images/mapa-contacto.png')} alt='mapa-contacto'/>
       </div>
     </SectionContainer>
+    <Footer/>
+    </>
   )
 }
 

@@ -1,16 +1,25 @@
 import React, {useState} from 'react'
 import Ficha from './Ficha'
 
+import { IoIosArrowBack,IoIosArrowForward  } from "react-icons/io";
 import { indCats } from '../../data/indData'
 
 const Fichero = () => {
   // DEJAR POR DEFECTO CAMISAS DESPUES
   const [activeCat, setActiveCat] = useState('test')
 
+  const move = (direction) => {
+    if(direction === 'right'){
+      console.log('move right')
+    }else{
+      console.log('move left')
+    }
+  }
 
   return (
     <>
       <div className='fichero'>
+        <IoIosArrowBack onClick={() => move('left')}/>
         <div className='categorias'>
           {indCats.map((data,index) => {
             return <div key={index} style={{display: 'contents'}}>
@@ -19,6 +28,7 @@ const Fichero = () => {
             </div>
           })}
         </div>
+        <IoIosArrowForward onClick={() => move('right')}/>
       </div>
       <Ficha categoria={activeCat.toLowerCase()}/>
     </>
