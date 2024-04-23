@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react'
 import _ from 'lodash'
+import { motion } from 'framer-motion';
 
 //array of objects with a property that has an array of images
 import {imgPack} from './imagesLoader'
@@ -7,14 +8,10 @@ import {imgPack} from './imagesLoader'
 const imgData = imgPack
 
 const Ficha = ({ categoria }) => {
-  
-  const [customHeight, setCustomHeight] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0)
 
   const [activeArray, setActiveArray] = useState(imgData['0']);
   const [imgPos, setImgPos] = useState(['0','1','2'])
   let activeImg = ['0','1','2'];
-  let excludedValues = []
   let activeLength = imgData[0].images.length;
 
   function useInterval(callback, delay) {
@@ -46,7 +43,6 @@ const Ficha = ({ categoria }) => {
     }
     arrToExclude = _.difference(arrToExclude, activeImg);
 
-    excludedValues = arrToExclude;
     return arrToExclude;
   }
   const changeImg = () => {
@@ -62,33 +58,13 @@ const Ficha = ({ categoria }) => {
         return newVal
       })
       activeImg = newImgArray
-    excludedValues = excludedCopy
     setImgPos(newImgArray)
   }
 
   //cambio de imagenes
   useInterval(() => {
     changeImg();
-  }, 3000)
-
-  useEffect(()=>{
-
-    setWindowWidth(window.screen.width);
-    setCustomHeight(document.querySelector('.img1').clientHeight)
-
-    window.addEventListener('resize', () => {
-      setWindowWidth(window.screen.width)
-    })
-    window.addEventListener('resize', () => {
-      const imgHeight = document.querySelector('.img1').clientHeight;
-      setCustomHeight(imgHeight);
-    })
-  }, [])
-
-  useEffect(()=>{
-    const imgHeight = document.querySelector('.img1').clientHeight;
-    setCustomHeight(imgHeight);
-  },customHeight)
+  }, 2500)
 
   useEffect(()=> {
     const ind = imgData.map(cat => cat.catName).indexOf(categoria)
@@ -101,11 +77,23 @@ const Ficha = ({ categoria }) => {
   return (
     <div className='ficha'>
       <div className='prim-part'>
-        <img className='img1' src={activeArray.images[imgPos[0]]} alt='img1'/>
+        <motion.img className='img1' src={activeArray.images[imgPos[0]]} alt='img1'
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{duration:1.2, ease: 'easeOut'}}
+/>
       </div>
       <div className='seg-part'>
-        <img src={activeArray.images[imgPos[1]]} style={{height: windowWidth > 600 ? `${customHeight/2 - 16}px` : 'auto'}} alt='img2'/>
-        <img src={activeArray.images[imgPos[2]]} style={{height: windowWidth > 600 ? `${customHeight/2 - 16}px` : 'auto'}} alt='img3'/>
+        <motion.img src={activeArray.images[imgPos[1]]} alt='img2'
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{duration:1.2, ease: 'easeOut'}}
+        />
+        <motion.img src={activeArray.images[imgPos[2]]} alt='img3'
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{duration:1.2, ease: 'easeOut'}}
+        />
       </div>
     </div>
   )

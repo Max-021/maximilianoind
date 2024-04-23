@@ -6,7 +6,7 @@ import { indCats } from '../../data/indData'
 
 const Fichero = () => {
   // DEJAR POR DEFECTO CAMISAS DESPUES
-  const [activeCat, setActiveCat] = useState('test')
+  const [activeCat, setActiveCat] = useState('camisas')
 
   const move = (direction) => {
     if(direction === 'right'){
@@ -19,7 +19,7 @@ const Fichero = () => {
   return (
     <>
       <div className='fichero'>
-        <IoIosArrowBack onClick={() => move('left')}/>
+        <IoIosArrowBack onClick={() => move('left')} style={{paddingRight: '15px'}}/>
         <div className='categorias'>
           {indCats.map((data,index) => {
             return <div key={index} style={{display: 'contents'}}>
@@ -28,7 +28,7 @@ const Fichero = () => {
             </div>
           })}
         </div>
-        <IoIosArrowForward onClick={() => move('right')}/>
+        <IoIosArrowForward onClick={() => move('right')} style={{paddingLeft: '15px'}}/>
       </div>
       <Ficha categoria={activeCat.toLowerCase()}/>
     </>

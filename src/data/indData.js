@@ -1,9 +1,5 @@
 export const indCats = [
     {
-        name: 'Test',
-        descr: 'Texto de test, afsdgflksdjf kj fdlsjf lsdkfj sldfj sldjf lsdjf lsj flsdj fjsdlk jsdfj sdjf sdlkfj lskj fsldj fsldk fjslk fjsdlkfj sdlk fkjsdl fjsd',
-    },
-    {
         name: 'Camisas',
         descr: '',
     },

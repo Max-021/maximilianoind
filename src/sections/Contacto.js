@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion';
 import SectionContainer from '../hoc/SectionContainer'
 import Footer from '../components/footer/Footer';
 
@@ -19,7 +20,11 @@ const Contacto = () => {
   return (
     <>
     <SectionContainer claseSeccion={'sect-contacto'} nombreSeccion={'contacto'}>
-      <div className='section contact-content'>
+      <motion.div className='section contact-content'
+        initial={{opacity:0}}
+        whileInView={{opacity:1}}
+        transition={{ease:'easeInOut', duration: 0.5}}
+      >
         <div className='info-contacto'>
           <h2>Contacto</h2>
           <div className='detalle-contacto'>
@@ -37,9 +42,9 @@ const Contacto = () => {
           </div>
         </div>
         <img className='mapa-contacto' src={require('../assets/images/mapa-contacto.png')} alt='mapa-contacto'/>
-      </div>
+      </motion.div>
     </SectionContainer>
-    <Footer/>
+      <Footer/>
     </>
   )
 }
