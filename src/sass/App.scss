@@ -80,12 +80,27 @@ h1{
     padding: 12px;
     box-shadow: 10px 10px 35px -15px $firstColor;
 }
-.img-portada {
-    align-self: center;
+.slider{
+    margin-top: 60px;
     width: 45%;
-    height: auto;
-    box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
-
+    height:auto;
+}
+.slider-img{
+    aspect-ratio: 4/3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider-img-icon{
+    width: 100%;
+    aspect-ratio: 4/3;
+}
+.slick-dots {
+    bottom: auto !important;
+    li {
+        width: 60px !important;
+        height: 60px !important;
+    }
 }
 //indumentaria
 .sect-ind {
@@ -95,7 +110,6 @@ h1{
     z-index: 0;
 }
 .ind-content {
-    // min-height: calc(-45px + 100vh);
     min-height: fit-content;
     display: flex;
     flex-flow: column;
@@ -111,7 +125,6 @@ h1{
 .fichero {
     z-index: 5;
     @include center-flex(row, flex-start, center);
-    // width: 100%;
     color: $lightColor;
     margin:15px 0 10px 0;
     overflow: hidden
@@ -121,7 +134,6 @@ h1{
     gap: 32px;
     font-size: 1.2rem;
     overflow: hidden;
-    // width: 80%;
 }
 .indCatBtn{
     cursor: pointer;
@@ -156,7 +168,6 @@ h1{
     img {
         height: calc(50% - 16px);
         aspect-ratio: 3/2;
-        // width: 100%;
         object-fit: cover;
         box-shadow: 10px 10px 50px -20px rgba(214,214,214,0.75);
     }
@@ -226,6 +237,13 @@ footer {
 
 //MEDIA QUERYS
 @media screen and (max-width: 1200px) {
+    //portada
+    .btn-portada{
+        margin-top: 50px;
+    }
+    h1{
+        margin-bottom: 10px;
+    }
     // indumentaria
     .sect-ind{
         background-image: url('../assets/images/responsive-ind-bkg.jpg');
@@ -279,6 +297,11 @@ footer {
     .sect-portada{
         flex-direction: column;
         justify-content: flex-start;
+    }
+    .slider{
+        width: 80%;
+        align-self: center;
+        margin-bottom: 90px;
     }
     .info-portada {
         p{

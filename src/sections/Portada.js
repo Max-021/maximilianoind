@@ -1,7 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import SectionContainer from '../hoc/SectionContainer'
+import Carousel from '../components/portada/Carousel';
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Portada = () => {
 
@@ -19,7 +22,7 @@ const Portada = () => {
           <a className='btn-portada' href='#indumentaria'>Nuestro producto</a>
         </motion.div>
       </div>
-      <img className='img-portada' src={require('../assets/images/landpage.jpg')} alt=''/>
+      <Carousel/>
     </SectionContainer>
   )
 }
