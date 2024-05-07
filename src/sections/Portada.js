@@ -3,9 +3,6 @@ import { motion } from 'framer-motion';
 import SectionContainer from '../hoc/SectionContainer'
 import Carousel from '../components/portada/Carousel';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 const Portada = () => {
 
   return (
