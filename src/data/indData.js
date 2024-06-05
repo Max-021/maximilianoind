@@ -27,14 +27,14 @@ export const indCats = [
         name: 'Buzos',
         descr: '',
     },
-    {
-        name: 'Camperas',
-        descr: '',
-    },
-    {
-        name: 'Ambos',
-        descr: '',
-    },
+    // {
+    //     name: 'Camperas',
+    //     descr: '',
+    // },
+    // {
+    //     name: 'Ambos',
+    //     descr: '',
+    // },
     {
         name: 'Accesorios',
         descr: '',

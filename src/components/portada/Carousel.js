@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import Slider from 'react-slick'
 
 import img1 from '../../assets/images/landpage.jpg'
-import img2 from '../../assets/images/salon1.jpg'
-import img3 from '../../assets/images/salon2.jpg'
-import img4 from '../../assets/images/salon3.jpg'
-import img5 from '../../assets/images/salon5.jpg'
+import img2 from '../../assets/images/salon1.webp'
+import img3 from '../../assets/images/salon2.webp'
+import img4 from '../../assets/images/salon3.webp'
+// import img5 from '../../assets/images/salon4.webp'
 
-const imgArr = [img1,img2,img3,img4,img5];
+const imgArr = [img1,img2,img3,img4,];
 
 const Carousel = () => {
     const settings = {
