@@ -30,7 +30,7 @@ const Footer = () => {
     <footer style={{paddingBottom: `${customHeight}px`}}>
       <div className='footer-icons'>
         <a href='#'><FaFacebookSquare/></a>
-        <a href='#'><FaInstagram/></a>
+        <a href='https://www.instagram.com/maximiliano_hombres/' target='_blank' rel="noreferrer noopener"><FaInstagram/></a>
       </div>
       <p>Creado por: <a href='https://www.maximilianofrega.com' target='_blank' rel="noreferrer noopener">Maximiliano Frega</a></p>
     </footer>
